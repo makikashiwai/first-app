@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.0"
 
-set :application, "first-app"
-set :repo_url, "git@github.com:makikashiwai/first-app.git"
+set :application, 'first-app'
+set :repo_url, 'git@github.com:makikashiwai/first-app.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
