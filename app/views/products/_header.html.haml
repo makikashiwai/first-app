@@ -1,0 +1,53 @@
+.section
+  .container
+    %p.text
+      Welcome to Market...
+
+.header
+  .header__section
+    .header__section__top
+      .form
+        = icon('fas', 'search', class: 'icon')
+        %input{class: "form__text", id: "serch-box",placeholder: "何をお探しですか？"}
+      %ul.header-tools
+        %li.tools-unit
+          = link_to "new_registration_path" do
+            = icon('fa', 'user-plus', class: 'icon')
+            会員登録
+        %li.tools-unit
+          = link_to "new_session_path" do
+            = icon('fas', 'sign-in-alt', class: 'icon')
+            ログイン
+        %li.tools-unit-cart
+          = link_to "#", class: "tools-unit-cart__btn" do
+            = icon('fas', 'shopping-cart', class: 'icon')
+    %h1.header__section__header-logo
+      = link_to image_tag("headerlogo4.png", class: "image"), root_path
+    %ul.header__section__bottom
+      %li.unit
+        = link_to "root_path" do
+          ホーム
+      %li.unit
+        = link_to "#" do
+          商品ジャンル
+          = icon('fas', 'angle-down', class: 'icon')
+        %ul.product
+          %li.product__link
+            = link_to "#" do
+              日用品
+          %li.product__link
+            = link_to "#" do
+              野菜
+          %li.product__link
+            = link_to "#" do
+              冷凍食品
+          %li.product__link
+            = link_to "#" do
+              お菓子
+      %li.unit
+        = link_to "#" do
+          お問合せ
+  .header__picture
+    .view
+      %img.top-view
+      
