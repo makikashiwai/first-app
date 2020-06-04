@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-         :confirmable, :lockable
+        :recoverable, :rememberable, :validatable
+        # :confirmable, :lockable
 
   validates :first_name,                   presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
   validates :last_name,                    presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
