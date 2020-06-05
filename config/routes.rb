@@ -15,4 +15,13 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :users do
+    collection do
+      get "show"
+      get "card"
+      get "delivary_address"
+      get "user_information"
+    end
+  end
+
 end
