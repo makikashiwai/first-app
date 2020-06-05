@@ -1,0 +1,18 @@
+.section
+  .container
+    %p.text
+      Welcome to Market...
+.signin-header
+  .signin-header__section
+    .section-top
+      %ul.top-tools
+        %li.tool-unit
+          = link_to "new_user_registration_path" do
+            = icon('fa', 'user-plus', class: 'icon')
+            会員登録
+        %li.tool-unit
+          = link_to "new_user_session_path" do
+            = icon('fas', 'sign-in-alt', class: 'icon')
+            ログイン
+    %h1.signin-header__section__logo
+      = link_to image_tag("headerlogo3.png", class: "image"), root_path

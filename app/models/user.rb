@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
-        # :confirmable, :lockable
+        :recoverable, :rememberable, :validatable,
+        :confirmable, :lockable
 
   validates :first_name,                   presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
   validates :last_name,                    presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+$\z/ }
@@ -12,5 +12,5 @@ class User < ApplicationRecord
   validates :password,                     presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}+\z/i }
   validates :password_confirmation,        presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}+\z/i }
 
-  has_many :address
+  has_one :address
 end
