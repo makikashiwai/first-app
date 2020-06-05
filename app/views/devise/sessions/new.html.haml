@@ -1,0 +1,28 @@
+.wrapper
+  = render "devise/registrations/header";
+  .login
+    .contents
+      .contents__top
+        %h3 アカウントをお持ちでない方はこちら
+        = link_to '新規会員登録', users_path, class: "btn"
+      .contents__bottom
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          %p.notice= notice
+          %p.alert= alert
+          .field
+            = f.email_field :email, autofocus: true, placeholder: "メールアドレス", autocomplete: "email"
+          %br/
+          .field
+            = f.password_field :password, placeholder: "パスワード", autocomplete: "current-password"
+          %br/
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          %br/
+          .field
+            = f.submit "ログイン", class: "btn"
+        = render "devise/shared/links"
+
+  = render "products/footer";
+

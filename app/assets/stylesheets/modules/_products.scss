@@ -77,18 +77,19 @@
         font-size: 14px;
         .tools-unit {
           display: inline;
-          margin-left: 45px;
+          margin-left: 40px;
           line-height: 1.4;
           a {
             color: #007bbd;
             text-decoration: none;
-            .icon {
-              left: -2.14285714em;
-              width: 2.14285714em;
-              top: .14285714em;
-              text-align: center;
-              color: #007bbd;
-            }
+          }
+          .icon {
+            left: -2.14285714em;
+            width: 2.14285714em;
+            top: .14285714em;
+            text-align: center;
+            color: #007bbd;
+            font-size: 16px;
           }
         }
         .tools-unit-cart {
@@ -100,7 +101,7 @@
             text-decoration: none;
           }
           .icon {
-            font-size: 25px;
+            font-size: 23px;
             color: #007bbd;
           }
         }

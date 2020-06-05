@@ -1,0 +1,93 @@
+.wrapper {
+  background-color: whitesmoke;
+  .signin {
+    padding-bottom: 50px;
+    .contents {
+      width: 60%;
+      background-color: white;
+      margin: 0 auto;
+      &__top {
+        padding: 2em 5em;
+        border-bottom: whitesmoke 0.1em solid;
+        text-align: center;
+        h2 {
+          font-size: 1.5em;
+          font-weight: bold;
+        }
+        h3 {
+          margin-bottom: 1.5em;
+        }
+        .btn {
+          padding: 1em 7.5em;
+          background-color: deepskyblue;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
+      &__bottom {
+        width: 24em;
+        margin: auto;
+        padding: 2em 0;
+        .field {
+          .title {
+            margin-bottom: 0.5em;
+            span {
+              background-color: red;
+              padding: 0.2em 0.5em;
+              border-radius: 0.2em;
+              color: #fff;
+              font-size: 12px;
+            }
+          }
+          input[type="text"] {
+            height: 2em;
+            width: 22em;
+            margin-bottom: 1em;
+          }
+          input[type="email"] {
+            height: 2em;
+            width: 22em;
+            margin-bottom: 1em;
+          }
+          input[type="password"] {
+            height: 2em;
+            width: 22em;
+            margin-bottom: 1em;
+          }
+          .password {
+            color: gray;
+          }
+          textarea {
+            height: 4em;
+            width: 21em;
+            margin-bottom: 1em;
+          }
+          select {
+            height: 2em;
+            width: 6.6em;
+            margin-bottom: 1em;
+          }
+          .btn {
+            height: 3em;
+            width: 21em;
+            padding: 0.5em 2em;
+            margin: 1em auto 1em;
+            background-color: red;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+          }
+        }
+        .notes {
+          margin-bottom: 1em;
+        }
+        .link {
+          text-decoration: none;
+          color: deepskyblue;
+        }
+      }
+    }
+  }
+}

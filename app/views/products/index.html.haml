@@ -1,4 +1,135 @@
-.wrapper
-  = render "header"
-  = render "main"
-  = render "footer"
+.section
+  .container
+    %p.text
+      Welcome to Market...
+
+.header
+  .header__section
+    .header__section__top
+      .form
+        = icon('fas', 'search', class: 'icon')
+        %input{class: "form__text", id: "serch-box",placeholder: "何をお探しですか？"}
+      %ul.header-tools
+        %li.tools-unit
+          - if user_signed_in?
+            = link_to "マイページ", "/users/#{current_user.id}", class: "tools-unit"
+          - else
+            = link_to "会員登録",new_user_registration_path, class: "tools-unit"
+            = icon('fa', 'user-plus', class: 'icon')
+            = link_to "ログイン", new_user_session_path, class: "tools-unit"
+            = icon('fas', 'sign-in-alt', class: 'icon')
+        %li.tools-unit-cart
+          = link_to "#", class: "tools-unit-cart__btn" do
+            = icon('fas', 'shopping-cart', class: 'icon')
+    %h1.header__section__header-logo
+      = link_to image_tag("headerlogo4.png", class: "image"), root_path
+    %ul.header__section__bottom
+      %li.unit
+        = link_to "root_path" do
+          ホーム
+      %li.unit
+        = link_to "#" do
+          商品ジャンル
+          = icon('fas', 'angle-down', class: 'icon')
+        %ul.product
+          %li.product__link
+            = link_to "#" do
+              日用品
+          %li.product__link
+            = link_to "#" do
+              野菜
+          %li.product__link
+            = link_to "#" do
+              冷凍食品
+          %li.product__link
+            = link_to "#" do
+              お菓子
+      %li.unit
+        = link_to "#" do
+          お問合せ
+  .header__picture
+    .view
+      %img.top-view
+
+.main
+  .sidebar
+    .menu
+      %h2.menu__genre
+        商品ジャンルから探す
+      %ul.menu-lists
+        %li.menu-lists__list
+          =link_to "#" do
+            日用品
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            野菜
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            冷凍食品
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            お菓子
+            = icon('fa', 'angle-right', class: 'icon')
+  .contents
+    .top-contents
+      %h2.title
+        ALL
+      .info
+        = link_to "#", class:"link-blue" do
+          もっと見る
+          = icon('fa', 'angle-right', class: 'icon')
+        .contents-products
+          - for j in 1..5
+            .product
+              = image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBiT7cIEs4PmES-kohUq_tdM3WDJni-4WK6L1YkGRGI9-j2-de&usqp=CAU"
+              .price
+                ¥150
+              .text
+                野菜＆フルーツ100％
+    .bottom-contrents
+
+.footer
+  .footer-picture
+    .footer-view
+      .text
+        %h2.catch
+          かんたん商品検索アプリ
+        %p.push
+          今すぐ無料ダウンロード！
+      .banners
+        = link_to image_tag(asset_path("app-store.svg"))
+        = link_to image_tag(asset_path("google-play.svg"))
+  .footer-copyright
+    .footerMenu
+      %ul.footerLists
+        %h2
+          MARKETについて
+        %li.footer_list
+          会社概要（運営会社）
+        %li.footer_list
+          プライバシーポリシー
+        %li.footer_list
+          MARKET利用規約
+        %li.footer_list
+          ポイントに関する特約
+      %ul.footerLists
+        %h2
+          MARKETを見る
+        %li.footer_list
+          カテゴリー一覧
+        %li.footer_list
+          ブランド一覧
+      %ul.footerLists
+        %h2
+          ヘルプ＆ガイド
+        %li.footer_list
+          FURIMAガイド
+        %li.footer_list
+          FURIMAロゴ利用ガイドライン
+        %li.footer_list
+          お知らせ
+    .copyright
+      Copyright (c) 2020- makikashiwai. All rights reserved.
