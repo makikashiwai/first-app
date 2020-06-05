@@ -1,0 +1,91 @@
+= render "products/header";
+
+.mypage-main
+  .mypage-main__left
+    .menu
+      %ul.menu-lists
+        %li.menu-lists__list
+          =link_to "root_path" do
+            マイページ
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "delivary_address" do
+            発送元・お届け先住所変更
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "card" do
+            支払い方法
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "user_information" do
+            本人情報
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            メール/パスワード
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            電話番号の確認
+            = icon('fa', 'angle-right', class: 'icon')
+  .mypage-main__right
+    .container
+      %h2.container-head
+        発送元・お届け先住所変更
+      .form
+        = form_with class: 'form-content' do |f|
+          .mypage-field
+            .mypage-label
+              = f.label :name, "お名前（全角）"
+              %span<必須
+            .mypage-input
+              = f.text_field :firstname, autofocus: true,  placeholder:"例）山田"
+              = f.text_field :lastname, autofocus: true, placeholder:"例）太郎"
+          .mypage-field
+            .mypage-label
+              = f.label :name, "お名前カナ（全角）"
+              %span<必須
+            .mypage-input
+              = f.text_field :firstname_kana, autofocus: true, placeholder:"例）ヤマダ"
+              = f.text_field :lastname_kana, autofocus: true, placeholder:"例）タロウ"
+          .mypage-field
+            .mypage-label
+              = f.label :post_nunber, "郵便番号"
+              %span<必須
+            .mypage-input
+              = f.text_field :post_nunber, placeholder: "例)123-4567"
+          .mypage-field
+            .mypage-label
+              = f.label :prefecture_id, "都道府県"
+              %span<必須
+            .mypage-input
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: true}
+              = icon('fa', 'angle-down', class: 'mypage-input__icon')
+          .mypage-field
+            .mypage-label
+              = f.label :city, "市区町村"
+              %span<必須
+            .mypage-input
+              = f.text_field :city, placeholder: "例)渋谷区"
+          .mypage-field
+            .mypage-label
+              = f.label :address, "番地"
+              %span<必須
+            .mypage-input
+              = f.text_field :address, placeholder: "例)道玄坂3-2"
+          .mypage-field
+            .mypage-label
+              = f.label :apartment, "建物名"
+              %span.no2<任意
+            .mypage-input
+              = f.text_field :apartment, placeholder: "例)フォンティスビル7F"
+          .mypage-field
+            .mypage-label
+              = f.label :tel_number, "電話番号"
+              %span.no2<任意
+            .mypage-input
+              = f.text_field :tel_number, autofocus: true, placeholder: "ハイフンなし10~11桁"
+          .actions
+            = f.submit "変更する", class: 'btn'
+            
+= render "products/footer";

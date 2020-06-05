@@ -1,0 +1,37 @@
+= render "products/header";
+
+.mypage-main
+  .mypage-main__left
+    .menu
+      %ul.menu-lists
+        %li.menu-lists__list
+          =link_to "root_path" do
+            マイページ
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "delivary_address" do
+            発送元・お届け先住所変更
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "card" do
+            支払い方法
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "user_information" do
+            本人情報
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            メール/パスワード
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            電話番号の確認
+            = icon('fa', 'angle-right', class: 'icon')
+  .mypage-main__right
+    .logout-form
+      = form_with url: destroy_user_session_path, method: :delete do |f|
+        .field-input
+          = f.submit 'ログアウト', class: 'submit-btn'
+
+= render "products/footer";

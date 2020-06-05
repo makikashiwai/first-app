@@ -1,9 +1,25 @@
-%header
-  %nav
-    - if user_signed_in?
-      %strong= link_to current_user.nickname, root_path
-      = link_to 'プロフィール変更', edit_user_registration_path
-      = link_to 'ログアウト', destroy_user_session_path, method: :delete
-    - else
-      = link_to 'サインアップ', new_user_registration_path
-      = link_to 'ログイン', new_user_session_path
+.section
+  .container
+    %p.text
+      Welcome to Market...
+
+.header
+  .header__section
+    .header__section__top
+      .form
+        = icon('fas', 'search', class: 'icon')
+        %input{class: "form__text", id: "serch-box",placeholder: "何をお探しですか？"}
+      %ul.header-tools
+        %li.tools-unit
+          - if user_signed_in?
+            = link_to "マイページ", "/users/#{current_user.id}", class: "tools-unit"
+          - else
+            = link_to "会員登録",new_user_registration_path, class: "tools-unit"
+            = icon('fa', 'user-plus', class: 'icon')
+            = link_to "ログイン", new_user_session_path, class: "tools-unit"
+            = icon('fas', 'sign-in-alt', class: 'icon')
+        %li.tools-unit-cart
+          = link_to "#", class: "tools-unit-cart__btn" do
+            = icon('fas', 'shopping-cart', class: 'icon')
+    %h1.header__section__header-logo
+      = link_to image_tag("headerlogo4.png", class: "image"), root_path

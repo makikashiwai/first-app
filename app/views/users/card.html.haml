@@ -1,0 +1,45 @@
+= render "products/header";
+
+.mypage-main
+  .mypage-main__left
+    .menu
+      %ul.menu-lists
+        %li.menu-lists__list
+          =link_to "root_path" do
+            マイページ
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "delivery_address" do
+            発送元・お届け先住所変更
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "card" do
+            支払い方法
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "user_information" do
+            本人情報
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            メール/パスワード
+            = icon('fa', 'angle-right', class: 'icon')
+        %li.menu-lists__list
+          =link_to "#" do
+            電話番号の確認
+            = icon('fa', 'angle-right', class: 'icon')
+  .mypage-main__right
+    %h2.cardpage-head
+      支払い方法
+    .cardpage-bottom
+      .top
+        .top__content
+          %h3.sub-head
+            クレジットカード一覧
+        .add-card
+          .card-form
+            = link_to "#", class: 'submit-btn' do
+              = icon('far', 'credit-card', class: 'icon')
+              クレジットカードを追加する
+
+= render "products/footer";
