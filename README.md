@@ -63,12 +63,11 @@
 |------|----|-------|
 |name|string|null: false|
 |price|integer|null:false|
-|introduction|text|
-|status|string|null: false|
+|introduction|string|
 |shipping_cost|string|null: false|
 |shipping_days|string|null: false|
 |category_id|references|null: false, foreign_key: true
-|store_id|integer|null: false, foreign_key: true|
+|store_id|eferences|null: false, foreign_key: true|
 |buyer|integer|
 
 ### Association
@@ -81,7 +80,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item|references|null: false, foreign_key: true|
+|product|references|null: false, foreign_key: true|
 
 ### Association
  - belongs_to :item
