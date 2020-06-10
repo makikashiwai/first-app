@@ -81,13 +81,15 @@
           もっと見る
           = icon('fa', 'angle-right', class: 'icon')
         .contents-products
-          - for j in 1..5
+          - @products[0..2].each do |product|
             .product
-              = image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBiT7cIEs4PmES-kohUq_tdM3WDJni-4WK6L1YkGRGI9-j2-de&usqp=CAU"
+              -# = link_to product_path(product.id) do
+              = image_tag ("#{product.images.first.image}"), size: "180x180"
               .price
-                ¥150
+                = "¥" + product.price.to_s
               .text
-                野菜＆フルーツ100％
+                = product.name
+              .store
     .bottom-contrents
 
 .footer
