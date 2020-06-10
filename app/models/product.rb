@@ -14,4 +14,7 @@ class Product < ApplicationRecord
   validates :category_id,    presence: true
   validates :store_id,    presence: true
 
+  enum buyer: { sell: 0, buy: 1}
+  scope :on_sell, -> { where(buyer: 0) }
+  
 end
