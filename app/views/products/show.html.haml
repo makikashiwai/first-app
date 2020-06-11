@@ -1,0 +1,100 @@
+= render "devise/shared/header"
+
+.showcontainer
+  .showcontainer__itemContents
+    %h2.showcontainer__itemContents__item-name
+      = @product.name
+    .showcontainer__itemContents__images
+      %ul.showcontainer__itemContents__images__display-up.slick
+        - @product.images.each do |thumbnail|
+          %li.fade-list
+            = image_tag thumbnail.image, class: "fade-list__image"
+            - if @product.buyer == "buy"
+              %span.fade-list__image__badge
+                = @product.buyer_i18n
+
+      -# %ul.showcontainer__itemContents__images__display-down.thumbnail
+      -#   - @product.images.each do |thumbnail| 
+      -#     %li.display-down__image
+      -#       = image_tag thumbnail.image, size: "150x150"
+
+
+
+    .showcontainer__itemContents__price
+      %h2.showcontainer__itemContents__price__amount
+        ¥
+        = @product.price
+        %span.showcontainer__itemContents__price__amount__tax
+          (税込)
+        %span.showcontainer__itemContents__price__amount__shippingConst
+          送料込み
+
+
+    .showcontainer__itemContents__item-btns
+      -if @product.buyer == "sell"
+        - if user_signed_in? && current_user.id == @product.user_id 
+          = link_to "商品を削除する", product_path(@product.id), method: :delete, class: "showcontainer__itemContents__item-btns--left show-a"
+          = link_to "商品を編集する", edit_product_path(@product.id), class: "showcontainer__itemContents__item-btns--right show-a"
+        - elsif user_signed_in? && current_user.id
+          = link_to "購入画面に進む", purchase_product_path(@product), class: "showcontainer__itemContents__item-btns--left show-a"
+          = link_to "カートに入れる", purchase_product_path(@product), class: "showcontainer__itemContents__item-btns--right show-a"
+
+    .showcontainer__itemContents__item-introduction
+      %p.showcontainer__itemContents__item-introduction__text
+    %table.showcontainer__itemContents__details
+      %tbody
+        %tr
+          %th
+            出品店
+          %td
+            -# = link_to "#{@store.name}", store_path(@product.store_id), class: "show-a" 
+        %tr
+          %th
+            カテゴリー
+          %td
+            .category
+            = link_to @grandparent_category.name, "#", class: "show-a" unless @grandparent_category == nil
+            .category
+            = link_to @parent_category.name , "#", class: "show-a" unless @parent_category == nil
+            .category
+            = link_to @this_category.name , "#", class: "show-a"
+        %tr
+          %th
+            商品情報
+          %td
+            = @product.introduction
+        %tr
+          %th
+            配送元
+          %td
+            -# = @prefecture.name
+        %tr
+          %th
+            配送料負担
+          %td
+            = @product.shipping_cost
+        %tr
+          %th
+            配送日数
+          %td
+            = @product.shipping_days
+  %ul.showcontainer__prevLink
+    - if @product.previous.present?
+      %li.showcontainer__prevLink__flex
+        = link_to  product_path(@product.previous.id),  class: "show-a" do
+          前の商品
+          %i.fas.fa-angle-left
+    - else
+      .none
+    - if @product.next.present?
+      %li.showcontainer__prevLink__flex
+        = link_to  product_path(@product.next.id), class: "show-a" do
+          次の商品
+          %i.fas.fa-angle-right
+    - else
+      .none
+
+  .showcontainer__related-item
+    = link_to "#{@this_category.name}", "#" ,{class: "showcontainer__related-item__link show-a"}
+
+= render "products/footer"

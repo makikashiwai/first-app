@@ -16,5 +16,13 @@ class Product < ApplicationRecord
 
   enum buyer: { sell: 0, buy: 1}
   scope :on_sell, -> { where(buyer: 0) }
+
+  def previous
+    Product.where("id < ?", self.id).order("id DESC").first
+  end
+
+  def next
+    Product.where("id > ?", self.id).order("id ASC").first
+  end
   
 end

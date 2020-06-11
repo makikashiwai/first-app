@@ -1,0 +1,32 @@
+= render "devise/shared/header";
+
+.purchase--item
+  .content
+    %h2
+      購入内容の確認
+    .content__main
+      %h3 商品名
+      %p
+        = @item.name
+    .content__main.price
+      %h3 支払い金額
+      .price__display
+        %p
+          = @item.price
+        %span 円
+    .content__main.payment
+      %h3 支払い方法
+      - if @card_information.blank?
+        %br
+      - else
+        %span
+          = "**** **** **** " + @card_information.last4
+          %br
+          - exp_month = @card_information.exp_month.to_s
+          - exp_year = @card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
+    .content__main
+      = form_tag(action: :pay, method: :post) do
+        = submit_tag "購入する", class: "button"
+
+= render "products/footer";

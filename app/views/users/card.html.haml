@@ -38,7 +38,7 @@
             クレジットカード一覧
         .add-card
           .card-form
-            = link_to "#", class: 'submit-btn' do
+            = link_to add_card_user_path(current_user), class: 'submit-btn', data: {"turbolinks" => false}  do
               = icon('far', 'credit-card', class: 'icon')
               クレジットカードを追加する
 
