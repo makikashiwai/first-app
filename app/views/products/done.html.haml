@@ -6,12 +6,12 @@
     .content__main
       %h3 商品名
       %p
-        = @item.name
+        = @product.name
     .content__main.price
       %h3 支払い金額
       .price__display
         %p
-          = @item.price
+          = @product.price
         %span 円
     .content__main
       = link_to 'ホーム画面に戻る', root_path, class: 'submit-btn'

@@ -15,8 +15,6 @@ class ProductsController < ApplicationController
     @grandparent_category = @parent_category.parent unless @parent_category == nil
     @store = @product.store_id
     # @prefecture = @user.address.prefecture
-    # @comment = Comment.new
-    # @comments = @product.comments
   end
 
   def new

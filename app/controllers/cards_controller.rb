@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  
+
   def create
     if params['payjp-token'].blank?
       redirect_to add_card_user_path(current_user)
