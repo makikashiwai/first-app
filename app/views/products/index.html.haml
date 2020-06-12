@@ -81,10 +81,10 @@
           もっと見る
           = icon('fa', 'angle-right', class: 'icon')
         .contents-products
-          - @products[0..2].each do |product|
+          - @products[0..3].each do |product|
             .product
-              -# = link_to product_path(product.id) do
-              = image_tag ("#{product.images.first.image}"), size: "180x180"
+              = link_to product_path(product.id) do
+                = image_tag ("#{product.images.first.image}"), size: "180x180"
               .price
                 = "¥" + product.price.to_s
               .text
@@ -127,9 +127,9 @@
         %h2
           ヘルプ＆ガイド
         %li.footer_list
-          FURIMAガイド
+          MARKETガイド
         %li.footer_list
-          FURIMAロゴ利用ガイドライン
+          MARKETゴ利用ガイドライン
         %li.footer_list
           お知らせ
     .copyright

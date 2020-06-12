@@ -46,6 +46,10 @@ group :development, :test do
   gem 'capistrano-rails-console'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # rspec
+  gem 'rspec-rails'
+  # factory_boy_rails
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -95,3 +99,19 @@ gem 'active_hash'
 
 # ancestry(カテゴリを多階層で管理)
 gem 'ancestry'
+
+# carrierwave & mini_magic with AWS S3
+gem 'carrierwave'
+gem 'mini_magick'
+
+
+# payjp(クレジットカード情報を管理)
+gem 'payjp'
+
+# dotenv(環境変数を管理)
+gem 'dotenv-rails'
+
+gem 'fog-aws'
+
+#enumをi18nに対応させる
+gem 'enum_help'

@@ -36,9 +36,27 @@
         .top__content
           %h3.sub-head
             クレジットカード一覧
+        .card-payment
+          - if @cards.present?
+            - @cards.each_with_index do |card, i|
+              .card-payment__lists
+                %form.card-payment__list--content
+                  .card-payment__lists__list
+                    .card-payment__lists__list__picture
+                  .card-payment__lists__number
+                    = "**** **** **** " + @card_information[i].last4
+                  .expire__date
+                    - exp_month = @card_information[i].exp_month.to_s
+                    - exp_year = @card_information[i].exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                = form_tag(delete_cards_path, method: :delete, id: 'charge-form',  name: "inputForm") do
+                  %input{ type: "hidden", name: "card_id", value: "" }
+                  %button.delete__button 削除する
+        .how__not__regist
+          = link_to "支払い方法について", "#", class: "purchase"
         .add-card
           .card-form
-            = link_to "#", class: 'submit-btn' do
+            = link_to add_card_user_path(current_user), class: 'submit-btn', data: {"turbolinks" => false}  do
               = icon('far', 'credit-card', class: 'icon')
               クレジットカードを追加する
 

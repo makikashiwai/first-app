@@ -1,0 +1,19 @@
+= render "devise/shared/header";
+
+.done--purchase
+  .content
+    %h2 購入が完了しました
+    .content__main
+      %h3 商品名
+      %p
+        = @product.name
+    .content__main.price
+      %h3 支払い金額
+      .price__display
+        %p
+          = @product.price
+        %span 円
+    .content__main
+      = link_to 'ホーム画面に戻る', root_path, class: 'submit-btn'
+
+= render "products/footer";
