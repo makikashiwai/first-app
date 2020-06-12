@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def secret_key
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+  end
+
   def production?
     Rails.env.production?
   end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
 
   resources :products do
     collection do
-      get "product_purchase"
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
@@ -41,10 +41,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: :create do
+  resource :cards, only: :create do
     collection do
-      delete 'delete', to: 'card#delete'
+      delete 'delete', to: 'cards#delete'
     end
   end
+  
 
 end

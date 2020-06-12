@@ -25,7 +25,8 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
-    end
+    else
       redirect_to card_users_path
+    end
   end
 end

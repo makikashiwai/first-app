@@ -36,16 +36,16 @@
     %h2.cardpage-head
       クレジットカード情報入力
     .addcard-bottom
-      = form_tag('/card', method: :post, action: "create", id: 'charge-form',  name: "inputForm", class: "addcard-bottom__inner") do
+      = form_tag('/cards', method: :post, action: "create", id: 'charge-form',  name: "inputForm", class: "chapter__container__inner") do
         .buy-card
           .buy-cardform
-            %label.payment-card カード番号
-            %span.require-form 必須
+            %label.payment__card カード番号
+            %span.require__form 必須
             %br/
-            = text_field_tag "number", "", class: "number input-number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+            = text_field_tag "number", "", class: "number input__deafult", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
           .buy-cardform
-            %label.payment-card 有効期限
-            %span.require-form 必須
+            %label.payment__card 有効期限
+            %span.require__form 必須
             %br/
             .select-box
               .select-box__half
@@ -82,12 +82,12 @@
                 %i.fas.fa-angle-down
                 %span  年
           .buy-cardform
-            %label.payment-card セキュリティーコード
-            %span.require-form 必須
+            %label.payment__card セキュリティーコード
+            %span.require__form 必須
             %br/
-            = text_field_tag "cvc", "", class: "number input-number", placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+            = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
             .single-code
               = link_to "カード背面の番号とは？", "#", class: "card-number"
           .add-card
             #card_token
-              = submit_tag "クレジットカードを登録する", id: "token_submit", class: 'submit-btn'
+              = submit_tag "クレジットカードを登録する", id: "token_submit", class: 'top__margin'

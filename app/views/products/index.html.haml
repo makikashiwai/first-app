@@ -84,7 +84,7 @@
           - @products[0..3].each do |product|
             .product
               = link_to product_path(product.id) do
-                = image_tag ("#{product.images.first.image}"), size: "150x150"
+                = image_tag ("#{product.images.first.image}"), size: "180x180"
               .price
                 = "¥" + product.price.to_s
               .text

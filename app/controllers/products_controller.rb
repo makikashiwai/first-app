@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
     @product.images.new
-    @product.build_brand
+    # @product.build_brand
   end
 
   def create
@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :introduction, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, :store_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
-  def set_item
+  def set_product
     @product = Product.find(params[:id])
   end
 
