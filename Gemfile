@@ -115,3 +115,6 @@ gem 'fog-aws'
 
 #enumをi18nに対応させる
 gem 'enum_help'
+
+#検索機能
+gem 'ransack'

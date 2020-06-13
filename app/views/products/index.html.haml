@@ -7,8 +7,10 @@
   .header__section
     .header__section__top
       .form
-        = icon('fas', 'search', class: 'icon')
-        %input{class: "form__text", id: "serch-box",placeholder: "何をお探しですか？"}
+        = search_form_for @search, url: searches_path, class: 'serchbox' do |f|
+          = f.search_field :name_cont, class: "form__text", id: "serch-box",placeholder: "何をお探しですか？"
+          = button_tag type:'submit',class:'btn' do
+            = icon('fas', 'search', class: 'icon')
       %ul.header-tools
         %li.tools-unit
           - if user_signed_in?
