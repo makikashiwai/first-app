@@ -48,3 +48,45 @@
       %li.unit
         = link_to "#" do
           お問合せ
+  .header__picture
+    .view
+      %img.top-view
+
+.main
+  .contents
+    .top-contents
+      .title
+        - if @search.present? 
+          %h2.search-result-head
+            - @search_products.each do |product|
+              = product.name
+              %span.search-result-head-text
+                の検索結果
+          .search-result-number
+            ="1-#{@products.count}件表示"
+        - else
+          %h2.search-result-nil
+            検索結果
+          .search-result-number
+            ="1-#{@products.count}件表示"
+      .info
+        -# = link_to "#", class:"link-blue" do
+        -#   もっと見る
+        -#   = icon('fa', 'angle-right', class: 'icon')
+        .contents-products
+          - @search_products.each do |product|
+            .product
+              - if @search_products
+                = link_to searches_path(product.name) do
+                  = image_tag ("#{product.images.first.image}"), size: "180x180"
+              - else
+                = link_to product_path(product.id) do
+                  = image_tag ("#{product.images.first.image}"), size: "180x180"
+              .price
+                = "¥" + product.price.to_s
+              .text
+                = product.name
+              .store
+    .bottom-contrents
+
+= render "products/footer"

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  # before_action :set_product, only: [:edit, :update, :show, :purchase, :pay, :done, :destroy]
+  before_action :set_product, only: [:edit, :update, :show, :purchase, :pay, :done, :destroy]
   before_action :set_card, only: [:purchase, :pay]
 
   def index
@@ -107,36 +107,6 @@ class ProductsController < ApplicationController
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
-
-  # def size
-  #   case @item.size
-  #   when "S"
-  #     @size = 1
-  #   when "M"
-  #     @size = 2
-  #   when "L"
-  #     @size = 3
-  #   when "LL"
-  #     @size = 4
-  #   end
-  # end
-
-  # def status
-  #   case @item.status
-  #   when "brand_new"
-  #     @status = 1
-  #   when "near_to_unused"
-  #     @status = 2
-  #   when "no_scrach"
-  #     @status = 3
-  #   when "slight_scrach"
-  #     @status = 4
-  #   when "has_scrach"
-  #     @status = 5
-  #   when "bad_state"
-  #     @status = 6
-  #   end
-  # end
 
   def shipping_cost
     case @product.shipping_cost

@@ -46,6 +46,8 @@ Rails.application.routes.draw do
       delete 'delete', to: 'cards#delete'
     end
   end
-  
+
+  resources :searches, only: :index do
+  end
 
 end
