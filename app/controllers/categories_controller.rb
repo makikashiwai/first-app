@@ -17,7 +17,9 @@ class CategoriesController < ApplicationController
     @products = @category.set_products
     @products = Product.on_sell.includes([:images]).order(created_at: :desc)
     # @products = @products.where(buyer_id: nil).order("created_at DESC").page(params[:page]).per(9)
-    # @category = Category.find(params[:id])
+    @category = Category.find(params[:id])
+    
+    #カテゴリーの写真が全て紐づく原因
     # @products = @category.products
     # @products = Product.where(category_id: [@category.id])
   end

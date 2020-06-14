@@ -43,10 +43,10 @@
       %p.showcontainer__itemContents__item-introduction__text
     %table.showcontainer__itemContents__details
       %tbody
-        %tr
-          %th
-            出品店
-          %td
+        -# %tr
+        -#   %th
+        -#     出品店
+        -#   %td
             -# = link_to "#{@store.name}", store_path(@product.store_id), class: "show-a" 
         %tr
           %th
@@ -63,10 +63,10 @@
             商品情報
           %td
             = @product.introduction
-        %tr
-          %th
-            配送元
-          %td
+        -# %tr
+        -#   %th
+        -#     配送元
+        -#   %td
             -# = @prefecture.name
         %tr
           %th

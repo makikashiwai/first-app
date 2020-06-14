@@ -29,22 +29,16 @@
       %li.unit
         = link_to "ホーム", root_path
       %li.unit
-        = link_to "#" do
+        .category_list
           商品ジャンル
           = icon('fas', 'angle-down', class: 'icon')
-        %ul.product
-          %li.product__link
-            = link_to "#" do
-              日用品
-          %li.product__link
-            = link_to "#" do
-              野菜
-          %li.product__link
-            = link_to "#" do
-              冷凍食品
-          %li.product__link
-            = link_to "#" do
-              お菓子
+          .category_list__box
+            .genre
+              .parents_list
+                - @parents.each do |parent|
+                  = link_to "#{parent.name}", category_path(parent), class: "parent_category", id: "#{parent.id}"
+              .children_list
+              .grand_children_list
       %li.unit
         = link_to "#" do
           お問合せ
