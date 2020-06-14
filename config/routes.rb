@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   resources :products do
     collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get "children_category", defaults: { format: 'json' }
+      get "grandchildren_category", defaults: { format: 'json' }
     end
     resources :comments, only: :create
     member do
@@ -49,5 +49,7 @@ Rails.application.routes.draw do
 
   resources :searches, only: :index do
   end
+
+  resources :categories, only: [:index, :new]
 
 end
