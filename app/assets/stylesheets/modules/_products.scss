@@ -271,7 +271,7 @@
     width: 100%;
     .view {
       .top-view {
-        background-image: image-url("/assets/cooking.jpg");
+        background-image: asset_path('cooking.jpg');
         background-size: cover;
         background-position: center;
         width: 100% !important;
@@ -427,7 +427,7 @@
   width: 100%;
   color: white;
   .footer-picture {
-    background-image: image-url("/assets/footer.jpg");
+    background-image: asset_path('footer.jpg');
     background-size: cover;
     background-position: center;
     height: 450px;
