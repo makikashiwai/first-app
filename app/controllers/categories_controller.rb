@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
+  #トップページの子と孫を表示させる
   def new
     @children = Category.find(params[:parent_id]).children
     respond_to do |format|
@@ -13,17 +14,20 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @products = @category.products
     @products = @category.set_products
-    @products = Product.where(category_id: [@category.id])
+    @products = Product.on_sell.includes([:images]).order(created_at: :desc)
     # @products = @products.where(buyer_id: nil).order("created_at DESC").page(params[:page]).per(9)
+    # @category = Category.find(params[:id])
+    # @products = @category.products
+    # @products = Product.where(category_id: [@category.id])
   end
 
+  #トップページの子を表示させる
   def children_category
     @children = Category.find(params[:parentCategory]).children
   end
 
+  #トップページの孫を表示させる
   def grandchildren_category
     @grandchildren = Category.find(params[:childCategory]).children
   end

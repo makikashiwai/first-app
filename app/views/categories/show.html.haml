@@ -1,0 +1,29 @@
+= render "devise/shared/header";
+
+
+.header__picture
+  .view
+    %img.top-view
+.search-category
+  .search-category__category-contents
+    .searchcategory-top
+      - @category_links.each do |category|
+        = link_to category.name, category_path(category), class: 'category-link'
+      .searchcategory-title
+        = "#{@category.name}の商品一覧"
+      .searchcategory-title__border
+        - if @products
+          .searchcategory-products
+            - @products[0..3].each do |product|
+              .searchcategory-product
+                = link_to product_path(product.id) do
+                  = image_tag ("#{product.images.first.image}"), size: "180x180"
+                .searchcategory-price
+                  = "¥" + product.price.to_s
+                .searchcategory-text
+                  = product.name
+                .searchcategory-store
+  .searchcategory-bottom-contrents
+
+
+= render "products/footer"
