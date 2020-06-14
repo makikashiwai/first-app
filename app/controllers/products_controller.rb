@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:edit, :update, :show, :purchase, :pay, :done, :destroy]
   before_action :set_card, only: [:purchase, :pay]
+  before_action :set_parents, only: [:index]
 
   def index
     @products = Product.on_sell.includes([:images]).order(created_at: :desc)
@@ -14,14 +15,24 @@ class ProductsController < ApplicationController
     @parent_category = @this_category.parent unless @this_category == nil
     @grandparent_category = @parent_category.parent unless @parent_category == nil
     @store = @product.store_id
-    # @prefecture = @user.address.prefecture
+    # @children = Category.find(params[:parent_id]).children
+    # respond_to do |format|
+    #   format.html  { redirect_to categories_path }
+    #   format.json
+    # # @prefecture = @user.address.prefecture
+    # end
   end
 
   def new
     @product = Product.new
     @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
     @product.images.new
-    # @product.build_brand
+    @product.build_brand
+    @children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -127,4 +138,5 @@ class ProductsController < ApplicationController
       @shipping_days = 3
     end
   end
+
 end
