@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :lastname_kana, :firstname_kana, :birth_day])
   end
 
-  def set_parents
-    @parents = Category.where(ancestry: nil)
-  end
-
   private
 
   def basic_auth
@@ -35,6 +31,14 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Product.ransack(params[:q])
     @search_products = @search.result
+
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").order("id DESC")
+    if params[:keyword] == ""
+      redirect_to '/products/search?utf8=✓&keyword=+++'
+    end
+    if @products.count == 0
+      @all_products = Product.limit(25).order("id ASC")
+    end
   end
 
   def set_parents
@@ -42,3 +46,4 @@ class ApplicationController < ActionController::Base
   end
 
 end
+

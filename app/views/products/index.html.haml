@@ -36,7 +36,7 @@
             .genre
               .parents_list
                 - @parents.each do |parent|
-                  = link_to "#{parent.name}", categories_path(parent), class: "parent_category", id: "#{parent.id}"
+                  = link_to "#{parent.name}", category_path(parent), class: "parent_category", id: "#{parent.id}"
               .children_list
               .grand_children_list
       %li.unit

@@ -33,7 +33,6 @@ Rails.application.routes.draw do
       get "children_category", defaults: { format: 'json' }
       get "grandchildren_category", defaults: { format: 'json' }
     end
-    resources :comments, only: :create
     member do
       get 'purchase', to: 'products#purchase'
       post 'pay', to: 'products#pay'
@@ -50,6 +49,6 @@ Rails.application.routes.draw do
   resources :searches, only: :index do
   end
 
-  resources :categories, only: [:index, :new]
+  resources :categories
 
 end
