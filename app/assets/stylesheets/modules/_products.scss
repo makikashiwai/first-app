@@ -424,12 +424,12 @@
 }
 
 .footer {
+  background-image:image-url("footerback.jpg");
+  background-size: cover;
+  background-position: center;
   width: 100%;
   color: white;
   .footer-picture {
-    background-image: image-url('footer.jpg');
-    background-size: cover;
-    background-position: center;
     height: 450px;
     .footer-view {
       padding: 120px 120px;
