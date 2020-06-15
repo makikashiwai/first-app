@@ -3,7 +3,7 @@
 
 # 💻 Project Title
 ## *first-app*
-[![Screenshot from Gyazo](https://i.gyazo.com/7f87ee93f4a7c0d4852f2b20c525110b.jpg)]
+![Screenshot from Gyazo](https://i.gyazo.com/7f87ee93f4a7c0d4852f2b20c525110b.jpg)
 
 
 # 💬 Description
