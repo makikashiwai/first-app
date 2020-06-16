@@ -6,11 +6,26 @@
 ![Screenshot from Gyazo](https://i.gyazo.com/7f87ee93f4a7c0d4852f2b20c525110b.jpg)
 
 
+# 🔎 Title
+## *Merket*
+
+
 # 💬 Description
   検索・購入サイトのアプリケーションです。  
   ウィザード形式での新規登録（登録後メール認証があります）、
   多階層カテゴリーの商品検索、クレジットカードでの商品購入をすることができます。  
   **※実際に取引を行うことはできません。**
+ 
+ 
+# 🌐 App URL
+ - IPアドレス：**http://54.168.99.6**
+### Basic認証
+ - ID：makikashiwai0529
+ - Pass：kasipan29
+### テストユーザー情報
+**アカウント**
+ - Email：t75.kashiwai.maki@gmail.com
+ - Pass：kashiwaimaki29
 
 
 # 💡 制作背景(意図)
@@ -27,6 +42,10 @@
 - [マイページ](https://i.gyazo.com/9a6ce6339f3e6f92b8007b814c9187d0.mp4)
 - [購入機能](https://i.gyazo.com/04766f8c75e66c8c544431065768f2cd.mp4)
 - [検索機能](https://i.gyazo.com/acac8220b6632e1d61512146489b51c1.mp4)
+
+# 💦 工夫ポイント
+検索することが1番の目的なので様々な所から検索ができるよう検索場所を３つ作り、
+検索後は商品が見やすいようにシンプルなビューにしております。
 
 
 # 💪 実装予定
