@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   def new
     #商品出品
     @product = Product.new
-    @category_parent =  Category.where("ancestry is null")
+    @category_parent = Category.where(ancestry: nil).pluck(:name).unshift("---")
     @product.images.new
 
   end
