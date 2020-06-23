@@ -30,7 +30,7 @@
         = link_to "ホーム", root_path
       %li.unit
         .category_list
-          = link_to '商品ジャンル', categories_path
+          商品ジャンル
           = icon('fas', 'angle-down', class: 'icon')
           .category_list__box
             .genre
@@ -42,6 +42,8 @@
       %li.unit
         = link_to "#" do
           お問合せ
+      %li.unit
+        = link_to '出品する', new_product_path
   .header__picture
     .view
       %img.top-view

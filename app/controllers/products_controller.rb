@@ -23,15 +23,22 @@ class ProductsController < ApplicationController
   end
 
   def new
-    # @product = Product.new
-    # @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
-    # @product.images.new
-    # @product.build_brand
-    # @children = Category.find(params[:parent_id]).children
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
+    #商品出品
+    @product = Product.new
+    # @category_parent =  Category.where("ancestry is null")
+    @product.images.new
+
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      # @category_parent =  Category.where("ancestry is null")
+      # product = Product.new
+      render :new
+    end
   end
 
   #購入確認
@@ -57,13 +64,6 @@ class ProductsController < ApplicationController
   #商品購入完了ページの表示
   def done
     @product.update_attribute(:buyer, 1)
-  end
-
-  private
-
-  #商品の情報を保存
-  def product_params
-    params.require(:product).permit(:name, :price, :introduction, :shipping_cost, :shipping_days, :prefecture_id, :category_id, :buyer, :store_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   #詳細ページに商品を表示させる
@@ -98,6 +98,25 @@ class ProductsController < ApplicationController
     end
   end
 
+  #商品出品 親カテゴリーが選択された後に動くアクション
+  def category_children
+    @category_children = Category.find("#{params[:parent_id]}").children
+    #親カテゴリーに紐付く子カテゴリーを取得
+  end
+
+  #商品出品 子カテゴリーが選択された後に動くアクション
+  def category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    #子カテゴリーに紐付く孫カテゴリーの配列を取得
+  end
+
+  private
+
+  #商品の情報を保存
+  def product_params
+    params.require(:product).permit(:name, :price, :introduction, :shipping_cost, :shipping_days, :category_id, :buyer, :store_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
 
   #いらないかも
   # def set_parents
@@ -112,18 +131,6 @@ class ProductsController < ApplicationController
   # def category_grandchildren
   #   @child_category = Category.find(params[:child_name])
   #   @category_grandchildren = @child_category.children
-  # end
-
-  #商品出品時のアクション
-  # def create
-  #   @product = Product.new(product_params)
-  #   if @product.save
-  #     redirect_to root_path
-  #   else
-  #     @parents = Category.where(ancestry: nil).pluck(:name).unshift("---")
-  #     @product.images.new
-  #     render :new
-  #   end
   # end
 
   #商品編集のアクション

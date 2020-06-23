@@ -8,15 +8,15 @@
       %ul.showcontainer__itemContents__images__display-up.slick
         - @product.images.each do |thumbnail|
           %li.fade-list
-            = image_tag thumbnail.image, class: "fade-list__image"
+            -# = image_tag thumbnail.image_url, class: "fade-list__image"
             - if @product.buyer == "buy"
               %span.fade-list__image__badge
                 = @product.buyer_i18n
 
-      -# %ul.showcontainer__itemContents__images__display-down.thumbnail
-      -#   - @product.images.each do |thumbnail| 
-      -#     %li.display-down__image
-      -#       = image_tag thumbnail.image, size: "150x150"
+      %ul.showcontainer__itemContents__images__display-down.thumbnail
+        - @product.images.each do |thumbnail| 
+          %li.display-down__image
+            -# = image_tag thumbnail.image, size: "150x150"
 
 
 
